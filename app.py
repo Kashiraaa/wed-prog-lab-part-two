@@ -1,18 +1,19 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, url_for
 app = Flask (__name__)
 
 @app.route ("/lab1")
 def lab1():
     return """
-<!doctype py>
+<!doctype html>
 
-<py>
+<html>
 
     <head>
         <title>Kashirskiy Danil Sergeevich, Lab.work №1</title>
     </head>
 
     <body>
+
         <header>
             NSTU, FB, Laboratory work №1
         </header>
@@ -30,8 +31,9 @@ def lab1():
         <footer>
             &copy; Kashirskiy Danil, FBI-14, III course, 2023
         </footer>
+
     </body>
-</py>  
+</html>  
 """
 
 @app.route ("/index")
@@ -41,8 +43,9 @@ def index():
 @app.route ("/menu")
 def menu():
     return """
-<!doctype py>
+<!doctype html>
 
+<html>
     <head>
         <title>Kashirskiy Danil Sergeevich, Lab.work lobby</title>
     </head>
@@ -84,4 +87,36 @@ def menu():
     <footer>
         &copy; Kashirskiy Danil, FBI-14, III course, 2023
     </footer>
+</html>
 """
+
+@app.route ("/lab1/lab1pic")
+def lab1pic():
+    return '''
+<!doctype html>
+
+<html>
+
+    <head>
+        <title>Kashirskiy Danil Sergeevich, Lab.work №1</title>
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+    </head>
+
+    <body>
+
+        <header>
+            NSTU, FB, Laboratory work №1
+        </header>
+
+        <h1>Хорошее дерево</h1>
+
+        <img src="''' + url_for('static', filename='lab1pic.jpg') + '''" style="margin: 10px auto 20px; display: block;">
+        
+        <footer>
+            &copy; Kashirskiy Danil, FBI-14, III course, 2023
+        </footer>
+
+    </body>
+</html>  
+'''
+

@@ -275,4 +275,5 @@ def yamaguchi():
 
 @app.route ("/lab2")
 def lab2():
-    return render_template('example.html')
+    name = 'Danil'
+    return render_template('example.html', name = name)

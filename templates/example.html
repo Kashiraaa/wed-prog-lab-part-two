@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danil Kashirskiy. Laboratory work #{{ numlab }}</title>
+    <title>
+        Kashirskiy 
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %}. 
+        Laboratory work #{{ numlab }}
+    </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
 </head>
 <body>
     <header>
-        WEB-programming part two,  Laboratory work #{{ numlab }}
+        WEB-programming part two,  {% if numlab%}Laboratory work #{% endif %}
     </header>
 
     <main>
@@ -20,7 +28,14 @@
     </main>
 
     <footer>
-        &copy; Kashirskiy {{ name }}, FBI-{{ numgroup }}, {{ numcorus }} course, 2023
+        &copy; 
+        Kashirskiy 
+        {% if name %}
+            {{ name }},
+        {% else %}
+            Анонимус,
+        {% endif %} 
+        FBI-{{ numgroup }}, {{ numcorus }} course, 2023
     </footer>
     
 </body>

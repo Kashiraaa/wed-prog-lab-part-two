@@ -279,4 +279,13 @@ def lab2():
     numlab = '2'
     numgroup = '14'
     numcorus = 'III'
-    return render_template('example.html', name = name, numlab = numlab, numgroup = numgroup, numcorus = numcorus)
+    fruits=[
+        {'name': 'яблоко', 'price': '100'},
+        {'name': 'мандарин', 'price': '200'},
+        {'name': 'слива', 'price': 'бесплатно'},
+        {'name': 'груша', 'price': '145'},
+        {'name': 'апельсин', 'price': '225'},
+        {'name': 'граната', 'price': '451'}
+        ]
+    return render_template('example.html', name = name, numlab = numlab, 
+                            numgroup = numgroup, numcorus = numcorus, fruits=fruits)

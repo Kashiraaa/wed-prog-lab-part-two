@@ -7,8 +7,14 @@ def lab():
 
 
 @lab3.route ('/lab3/form1')
-def user():
+def form1():
+    errors = {}
     user = request.args.get('user')
     age = request.args.get('age')
+    if user == '':
+        errors[user] = 'Заполните поле пожалуйста !'
+    elif age == '':
+        errors[age] = 'Заполните поле пожалуйста !'
+        
     sex = request.args.get('sex')
-    return render_template('form1.html', user = user, age = age, sex = sex)
+    return render_template('form1.html', user = user, age = age, sex = sex, errors = errors)

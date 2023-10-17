@@ -9,7 +9,7 @@
     <h2>ДОбро пожаловать на наш сайт !</h2>
 
     <div>Ваш возраст: {{ age }}</div>
-    <div>Ваш пол: {{ sex }}</div>
+    <div>Ваш пол: {{ 'Мужской' if sex == 'male' else 'Женский' }}</div>
     <ol>
         <li><a href="/lab3/form1"> Заполнить форму заново</a></li>
     </ol>
@@ -17,20 +17,23 @@
 
     <h1>Пользователь</h1>
     <form>
-        <Label>
-            <div>
-                <input type="text" placeholder="Как ваше имя ?" name="user">
-            </div>
-            <div>
-                <input type="text" placeholder="Каков ваш возраст ?" name="age">
-            </div>
-            <div>
-                <input type="text" placeholder="Каков ваш пол ?" name="sex">
-            </div>
-            <div>
-                <button type="submit" >Отправить</button>
-            </div>
-        </Label>
+        <Label>Ваше имя:</Label>
+        <div>
+            <input type="text" placeholder="Как ваше имя ?" name="user">
+        </div>
+        <Label>Ваш возраст:</Label>
+        <div>
+            <input type="number" placeholder="Каков ваш возраст ?" name="age">
+        </div>
+        <Label>Ваш пол:</Label>
+        <div>
+            <select name="sex">
+                <option value="male">Мужчина</option>
+                <option value="female">Женщина</option>
+            </select>
+        </div>
+            <button type="submit" >Отправить</button>
+        </div>
     </form>
     {% endif %}
 {% endblock %}

@@ -274,7 +274,7 @@ def yamaguchi():
 '''
 
 @app.route ("/lab2")
-def lab2():
+def examp():
     name = 'Danil'
     numlab = '2'
     numgroup = '14'
@@ -306,5 +306,6 @@ def lab2():
                             fruits=fruits, books=books, strstr=strstr)
 
 @app.route ("/lab2/")
-def lab22():
+def lab2():
     return render_template('lab2.html')
+

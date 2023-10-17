@@ -38,7 +38,7 @@ def pay():
         price += 10
     if request.args.get('sugar') == 'on':
         price += 30
-    if request.args.get('salt=caramel') == 'on':
+    if request.args.get('salt-caramel') == 'on':
         price += 50
 
     return render_template('pay.html', price = price)
@@ -46,3 +46,26 @@ def pay():
 @lab3.route ('/lab3/success')
 def succs():
     return render_template('success.html')
+
+@lab3.route ('/lab3/bilet')
+def bilett():
+    ERERER = {}
+    FIO = request.args.get('FIO')
+    age = request.args.get('age')
+    PA = request.args.get('PA')
+    PB = request.args.get('PB')
+    if FIO == '':
+        ERERER[FIO] = 'Заполните поле пожалуйста !'
+    elif age == '':
+        ERERER[age] = 'Заполните поле пожалуйста !'
+    elif PA == '':
+        ERERER[PA] = 'Заполните поле пожалуйста !'
+    elif PB == '':
+        ERERER[PB] = 'Заполните поле пожалуйста !'
+    
+    
+    return render_template('bilet.html', ERERER = ERERER, FIO = FIO, age = age, PA = PA, PB = PB)
+
+@lab3.route ('/lab3/successb')
+def succsss():
+    return render_template('successb.html' )

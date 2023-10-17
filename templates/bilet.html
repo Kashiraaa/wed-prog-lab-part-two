@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block main %}
+    <h1>Оформление билета:</h1>
+
+    <form action="/lab3/successb" style="border: 1px solid black; color: whitesmoke; 
+                    border-radius: 20px;background-color: black; 
+                    padding: 10px; text-align: center;">
+        <Label>Введите ФИО пассажира:</Label>
+        <div>
+            <input type="text" placeholder="ФИО" name="FIO" value="{{ FIO or '' }}">
+            <span class="error" style="color: lightcoral;">{{ ERERER[FIO] }}</span>
+        </div><br>
+
+        <Label>Введите тип пассажира:</Label>
+        <div>
+            <select name="OLD">
+                <option value="KID" {{ OLD == 'KID' or 'selected '}}>Детский</option>
+                <option value="PPL" {{ OLD == 'PPL' or 'selected '}}>Взрослый</option>
+            </select>
+        </div><br>
+
+        <Label>Введите место для пассажира :</Label>
+        <div>
+            <select name="PLC">
+                <option value="UP" {{ PLC == 'UP' or 'selected '}}>Верхняя полка</option>
+                <option value="DWM" {{ PLC == 'DWM' or 'selected '}}>Нижняя полка</option>
+                <option value="BUP" {{ PLC == 'BUP' or 'selected '}}>Верхняя боковая полка</option>
+                <option value="BDWN" {{ PLC == 'BDWN' or 'selected '}}>Нижняя боковая полка</option>
+            </select>
+        </div><br>
+
+        <div>Багаж будет?:</div>
+        <div>
+            <lable>
+                <input type="radio" value="YEU" name="BAG" checked>Да 
+            </lable>
+            <lable>
+                <input type="radio" value="DOU" name="BAG" checked>Нет 
+            </lable>
+        </div><br>
+        
+        <Label>Возраст:</Label>
+        <div>
+            <input type="number" placeholder="Возраст пассажира" name="age" min="18" max="120"  value="{{ age or '' }}">
+            <span class="error" style="color: lightcoral;">{{ ERERER[age] }}</span>
+        </div><br>
+
+        <Label>Пункт выезда:</Label>
+        <div>
+            <input type="text" placeholder="Пункт выезда" name="PA" value="{{ PA or '' }}">
+            <span class="error" style="color: lightcoral;">{{ ERERER[PA] }}</span>
+        </div><br>
+
+        <Label>Пункт назначения:</Label>
+        <div>
+            <input type="text" placeholder="Пункт назначения" name="PB" value="{{ PB or '' }}">
+            <span class="error" style="color: lightcoral;">{{ ERERER[PB] }}</span>
+        </div><br>
+
+        <Label>Пункт назначения:</Label>
+        <div>
+            <input type="date"  name="data">
+        </div><br>
+
+        </div>
+        <button type="submit" >Оформить билет</button>
+        </div>
+    </form>
+{% endblock %}

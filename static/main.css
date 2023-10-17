@@ -2,7 +2,7 @@ body {
     background-color: lightpink;
     color: black;
     font-family: 'Times New Roman';
-    margin: 0px;  
+    margin: 0px; 
 }
 
 header{
@@ -16,6 +16,7 @@ header{
 
 main{
     margin: 10px 20px;
+    margin-bottom: 20px;
 }
 
 footer {

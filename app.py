@@ -72,7 +72,7 @@ def menu():
                 <a href="lab1/yamaguchi" target="_blank">Laboratory work #1(Yamaguchi)</a>
             </li>
             <li>
-                <a href="lab2" target="_blank" >Laboratory work #2</a>
+                <a href="lab2/" target="_blank" >Laboratory work #2</a>
             </li>
             <li>
                 <a href="lab3" target="_blank">Laboratory work #3</a>
@@ -308,4 +308,8 @@ def examp():
 @app.route ("/lab2/")
 def lab2():
     return render_template('lab2.html')
+
+@app.route ("/lab2/zadanie")
+def zad():
+    return render_template('zadanie.html')
 

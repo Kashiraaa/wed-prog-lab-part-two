@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block lab %}Laboratory work #2{% endblock %}
+
+{% block main %}
+    <h1>Cars</h1>
+    <div>Type of cars on our world:</div>
+    <h2>Седан</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m1.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>Это классический пример трехобъемной компоновки. </p>
+    <h2>Хетчбек</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m2.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>Это небольшой автомобиль, у которого салон и багажник объединены (двухобъемная компоновка).</p>
+    <h2>Лифтбек</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m3.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>Это отличный вариант для тех, кому нравится практичность хэтчбеков и красота седанов.</p>
+    <h2>Универсал</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m4.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>Это, по сути, тот же хэтчбек, только с увеличенным грузовым отсеком. </p>
+    <h2>Внедорожний</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m5.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>
+        Этот тип кузова машин отличает высокая проходимость. 
+        Большой дорожный просвет, увеличенные ходы подвески, 
+        рамная конструкция и полный привод позволяют спокойно съезжать с асфальта.
+    </p>
+    <h2>Кроссовер</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m6.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>Кроссовер (или паркетник) объединил в себе лучшие качества внедорожников и легковых машин. </p>
+    <h2>Минивэн</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m7.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>
+        Если нужно часто перевозить большое количество пассажиров или габаритный груз, 
+        стоит обратить внимание не на седан или кроссовер, а на минивэн.
+    </p>
+    <h2>Купе</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m8.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>
+        Это машина, которая может быть только двухдверной. 
+        Здесь такой же трехобъемный кузов, как у седана, но задних дверей нет.
+    </p>
+    <h2>Пикап</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m9.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>
+        Кузов пикапа состоит из моторного отсека, кабины и грузовой площадки. 
+        Главная задача авто с таким типом кузова — перевозка больших грузов.
+    </p>
+    <h2>Родстер</h2>
+    <img src="''' + url_for('static', filename='/static/lab2m19.jpg') + '''" style="margin: 10px auto 20px; display: block; width: 45%">
+    <p>
+        Это двухдверная машина, крыша которой может складываться. 
+        У этого типа кузова обязательно присутствует второй ряд сидений, 
+        при этом он может быть чисто номинальным – предназначенным для 
+        размещения пары дополнительных сумок, а не для пассажиров.
+    </p>
+{% endblock %}

@@ -12,9 +12,9 @@ def form1():
     user = request.args.get('user')
     age = request.args.get('age')
     if user == '':
-        errors[user] = 'Заполните поле пожалуйста !'
+        errors['user'] = 'Заполните поле пожалуйста !'
     elif age == '':
-        errors[age] = 'Заполните поле пожалуйста !'
+        errors['age'] = 'Заполните поле пожалуйста !'
         
     sex = request.args.get('sex')
     return render_template('form1.html', user = user, age = age, sex = sex, errors = errors)
@@ -54,18 +54,23 @@ def bilett():
     age = request.args.get('age')
     PA = request.args.get('PA')
     PB = request.args.get('PB')
+    data = request.args.get('data')
     if FIO == '':
-        ERERER[FIO] = 'Заполните поле пожалуйста !'
+        ERERER['FIO'] = 'Заполните поле пожалуйста !'
     elif age == '':
-        ERERER[age] = 'Заполните поле пожалуйста !'
+        ERERER['age'] = 'Заполните поле пожалуйста !'
     elif PA == '':
-        ERERER[PA] = 'Заполните поле пожалуйста !'
+        ERERER['PA'] = 'Заполните поле пожалуйста !'
     elif PB == '':
-        ERERER[PB] = 'Заполните поле пожалуйста !'
-    
-    
-    return render_template('bilet.html', ERERER = ERERER, FIO = FIO, age = age, PA = PA, PB = PB)
+        ERERER['PB'] = 'Заполните поле пожалуйста !'
+    elif data == '':
+        ERERER['data'] = 'Заполните поле пожалуйста !'
 
-@lab3.route ('/lab3/successb')
+    OLD = request.args.get('OLD')
+    PLC = request.args.get('PLC')
+    BAG = request.args.get('BAG')
+    return render_template('bilet.html', ERERER = ERERER, FIO = FIO, age = age, PA = PA, PB = PB, data = data, OLD = OLD, PLC = PLC, BAG = BAG)
+
+@lab3.route ('/lab3/succesb')
 def succsss():
-    return render_template('successb.html' )
+    return render_template('succesb.html' )

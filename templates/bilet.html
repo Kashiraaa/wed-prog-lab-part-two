@@ -3,15 +3,43 @@
 {% block lab %}Лабораторная работа 3{% endblock %}
 
 {% block main %}
+    {% if FIO and age and PA and PB and data %}
+    <h1>Оплата прошла успешно, вот Ваш билет:</h1>
+
+    <table border="0.5" style="background-color: black; color: whitesmoke; text-align: center; font-size: 12pt;" >
+        <tr>
+            <th style="font-size: 16pt">Билет №*******</th>
+            <th style="font-size: 16pt">                    </th>
+            <th style="font-size: 16pt">г. {{PA}} --> г. {{PB}}</th>
+        </tr>
+        <tr>
+            <td>Пассажир:<br> {{FIO}}</td>
+            <td>Присутсвие багажа:<br> {{ 'Да' if BAG == 'YEU' else 'Нет' }}</td>
+            <td><img src="{{ url_for('static', filename='bilet.jpg') }}" width="15%" ></td>
+       </tr>
+       <tr>
+            <td>Тип билета:<br> {{ 'Детский' if OLD == 'KID' else 'Взрослый' }}</td>
+            <td>Выбранное место:<br>{% if PLC == 'UP' %} Верхняя полка {% elif PLC == 'DWM' %} Нижняя полка {% elif PLC == 'BUP' %} Верхняя боковая полка {% else %} Нижняя боковая полка {% endif %}</td>
+            <td>Возраст пассажира:<br> {{age}} лет</td>
+       </tr>
+       <tr>
+            <td>Дата отправки: {{data}}</td>
+            <td>              </td>
+            <td><img src="{{ url_for('static', filename='bilet2.png') }}" width="25%" style="border-radius: 10px;"></td>
+        </tr>
+    </table>
+    
+    {% else %}
+
     <h1>Оформление билета:</h1>
 
-    <form action="/lab3/successb" style="border: 1px solid black; color: whitesmoke; 
+    <form style="border: 1px solid black; color: whitesmoke; 
                     border-radius: 20px;background-color: black; 
                     padding: 10px; text-align: center;">
         <Label>Введите ФИО пассажира:</Label>
         <div>
             <input type="text" placeholder="ФИО" name="FIO" value="{{ FIO or '' }}">
-            <span class="error" style="color: lightcoral;">{{ ERERER[FIO] }}</span>
+            <span class="error" style="color: lightcoral;">{{ ERERER['FIO'] }}</span>
         </div><br>
 
         <Label>Введите тип пассажира:</Label>
@@ -34,39 +62,39 @@
 
         <div>Багаж будет?:</div>
         <div>
-            <lable>
-                <input type="radio" value="YEU" name="BAG" checked>Да 
-            </lable>
-            <lable>
-                <input type="radio" value="DOU" name="BAG" checked>Нет 
-            </lable>
+            <select name="BAG">
+                <option value="YEU" {{ BAG == 'YEU' or 'selected '}}>Да</option>
+                <option value="DOU" {{ BAG == 'DOU' or 'selected '}}>Нет</option>
+            </select>
         </div><br>
         
         <Label>Возраст:</Label>
         <div>
             <input type="number" placeholder="Возраст пассажира" name="age" min="18" max="120"  value="{{ age or '' }}">
-            <span class="error" style="color: lightcoral;">{{ ERERER[age] }}</span>
+            <span class="error" style="color: lightcoral;">{{ ERERER['age'] }}</span>
         </div><br>
 
         <Label>Пункт выезда:</Label>
         <div>
             <input type="text" placeholder="Пункт выезда" name="PA" value="{{ PA or '' }}">
-            <span class="error" style="color: lightcoral;">{{ ERERER[PA] }}</span>
+            <span class="error" style="color: lightcoral;">{{ ERERER['PA'] }}</span>
         </div><br>
 
         <Label>Пункт назначения:</Label>
         <div>
             <input type="text" placeholder="Пункт назначения" name="PB" value="{{ PB or '' }}">
-            <span class="error" style="color: lightcoral;">{{ ERERER[PB] }}</span>
+            <span class="error" style="color: lightcoral;">{{ ERERER['PB'] }}</span>
         </div><br>
 
         <Label>Пункт назначения:</Label>
         <div>
-            <input type="date"  name="data">
+            <input type="date"  name="data" value="{{ data or '' }}">
+            <span class="error" style="color: lightcoral;">{{ ERERER['data'] }}</span>
         </div><br>
 
         </div>
         <button type="submit" >Оформить билет</button>
         </div>
     </form>
+    {% endif %}
 {% endblock %}

@@ -21,12 +21,12 @@
         <Label>Ваше имя:</Label>
         <div>
             <input type="text" placeholder="Как ваше имя ?" name="user" value="{{ user or '' }}">
-            <span class="error" style="color: brown;">{{ errors[user] }}</span>
+            <span class="error" style="color: brown;">{{ errors['user'] }}</span>
         </div>
         <Label>Ваш возраст:</Label>
         <div>
             <input type="number" placeholder="Каков ваш возраст ?" name="age"  value="{{ age or '' }}">
-            <span class="error" style="color: brown;">{{ errors[age] }}</span>
+            <span class="error" style="color: brown;">{{ errors['age']  }}</span>
         </div>
         <Label>Ваш пол:</Label>
         <div>

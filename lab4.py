@@ -21,3 +21,12 @@ def login():
     if username == '' or username != 'alex' or password == '' or password != '123':
         error = 'Неверный логин и/или пароль'
         return render_template ('login.html', error = error)
+    
+@lab4.route ('/lab4/cold', methods = ['GET', 'POST'])
+def tmp():
+    if request.methid == 'GET':
+        RETURN RENDER_TEMPLATE('cold.html')
+    
+
+    if '-12' < temp:
+        

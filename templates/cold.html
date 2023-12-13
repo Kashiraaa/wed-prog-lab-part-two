@@ -4,7 +4,7 @@
 
 {% block main %}
     <h1>Холодильник</h1>
-    <div class="error">{{ error }}</div>
+    <div class="error" style="color: darkred">{{ error }}</div>
     {% if msg %}
     <div style="text-align: center;">
         {{ msg }}
@@ -30,9 +30,4 @@
             <a href="/lab4/cold">Назад</a>
         </div>
     </form>
-    <style>
-        .error{
-            color: darkred;
-        }
-    </style> 
     {% endblock %}

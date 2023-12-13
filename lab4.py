@@ -49,5 +49,40 @@ def holodos():
         sf = '❄️'
 
     return render_template('cold.html', error=error, temp=temp, msg=msg, sf=sf)
+  
+@lab4.route('/lab4/zr', methods=['GET', 'POST'])
+def zerna():
+    if request.method == 'GET':
+        return render_template('zr.html')
 
+    error = {}
+    zr = request.form.get('zr')
+    vs = request.form.get('vs')
+    msgg = ''
+
+    if vs is None or vs == '':
+        error['vs'] = 'не введен вес'
+    elif float(vs) <= 0:
+        error['vs'] = 'неверное значение веса'
+    elif zr:
+        if zr == 'yachmen':
+            pr = 12000 
+        elif zr == 'oves':
+            pr = 8500
+        elif zr == 'psheniza':
+            pr = 8700
+        elif zr == 'roj':
+            pr = 14000
         
+    tc = float(vs) * pr
+
+    if float(vs) > 50:
+        tc *= 0.9
+        msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} &#x20bd Применена скидка за большой объем.'.format(vs, tc)
+    else:
+        msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} &#x20bd'.format(vs, tc)
+
+    if float(vs) > 500:
+        msgg = 'Такого объема сейчас нет в наличии.'
+
+    return render_template('zr.html', error=error, zr=zr, vs=vs, msgg=msgg)   

@@ -22,11 +22,32 @@ def login():
         error = 'Неверный логин и/или пароль'
         return render_template ('login.html', error = error)
     
-@lab4.route ('/lab4/cold', methods = ['GET', 'POST'])
-def tmp():
-    if request.methid == 'GET':
-        RETURN RENDER_TEMPLATE('cold.html')
-    
+@lab4.route('/lab4/cold', methods=['GET', 'POST'])
+def holodos():
+    if request.method == 'GET':
+        return render_template('cold.html')
 
-    if '-12' < temp:
+    temp = request.form.get('temp')
+    error = ''
+    msg = '' 
+    sf = '' 
+
+    if temp is None or temp == '':
+        error = 'Ошибка: не задана температура'
+    elif int(temp) < -12:
+        error = 'не удалось установить температуру — слишком низкое значение'
+    elif int(temp) > -1:
+        error = 'не удалось установить температуру — слишком высокое значение'
+    elif -12 <= int(temp) <= -9:
+        msg = f'Установлена температура: {temp}°C'
+        sf = '❄️❄️❄️'
+    elif -8 <= int(temp) <= -5:
+        msg = f'Установлена температура: {temp}°C'
+        sf = '❄️❄️'
+    elif -4 <= int(temp) <= -1:
+        msg = f'Установлена температура: {temp}°C'
+        sf = '❄️'
+
+    return render_template('cold.html', error=error, temp=temp, msg=msg, sf=sf)
+
         

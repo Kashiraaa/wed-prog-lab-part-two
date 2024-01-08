@@ -85,4 +85,27 @@ def zerna():
     if float(vs) > 500:
         msgg = 'Такого объема сейчас нет в наличии.'
 
-    return render_template('zr.html', error=error, zr=zr, vs=vs, msgg=msgg)   
+    return render_template('zr.html', error=error, zr=zr, vs=vs, msgg=msgg)
+
+@lab4.route('/lab4/cookies', methods=['GET', 'POST'])
+def zerna():
+    if request.method == 'GET':
+        return render_template('cookies.html')
+
+    color = request.form.get.('color')
+    backcolor = request.form.get('backcolor')
+    font_size = request.form.get('font_size')
+    if color == backcolor:
+        error_msg = 'Цвет текста и фона одинаковые, выберите разные цвета'
+        return render_template('error.html', error_msg=error_msg)
+    headers = {
+        'Set-Cookie': [
+            'color=' + color + ' ; path=/',
+            'backcolor=' + backcolor + ' ; path=/',
+            'font_size=' + str(font_size) + ' ; path=/'
+        ],
+        'Location': '/lab4/cookies'  
+    }
+    return render_template('cookies.html',  color =  color, backcolor = backcolor, font_size = font_size,  error_msg = error_msg)
+
+  return '', 303, headers

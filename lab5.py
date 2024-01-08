@@ -7,10 +7,10 @@ lab5 =Blueprint('lab5',__name__)
 def dBConnect():
     conn = psycopg2.connect(
         host="127.0.0.1",
-        database = "DANIL_knowledge_base",
-        user = "DANIL_knowledge_base",
+        database = "danil_knowledge_base",
+        user = "danil_knowledge_base",
         password = "1233",
-        port = 5433
+        port = 5432
     )
 
     return conn;
@@ -26,10 +26,10 @@ def main():
     # Прописываем параметры подключения к БД
     conn = psycopg2.connect(
         host="127.0.0.1",
-        database="DANIL_knowledge_base",
-        user="DANIL_knowledge_base",
+        database="danil_knowledge_base",
+        user="danil_knowledge_base",
         password="1233",
-        port = 5433
+        port = 5432
     )
     # Получаем курсор. С помощью него мы можем выполнять SQL-запросы
     cur = conn.cursor()
@@ -52,10 +52,10 @@ def main():
 def user():
     conn = psycopg2.connect(
         host="127.0.0.1",
-        database = "DANIL_knowledge_base",
-        user = "DANIL_knowledge_base",
+        database = "danil_knowledge_base",
+        user = "danil_knowledge_base",
         password = "1233",
-        port = 5433
+        port = 5432
     )
     cur = conn.cursor() #создает курсор, привязанный к соединению (conn), которое уже было установлено с базой данных 
     cur.execute("SELECT * FROM users;")
@@ -93,7 +93,7 @@ def registerPage():
         cur.close()
         return render_template('register.html', errors=errors)
     
-    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{hashPassword}');")
+    cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{password}');")
     conn.commit()
     conn.close()
     cur.close()

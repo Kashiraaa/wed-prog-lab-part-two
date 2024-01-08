@@ -7,9 +7,9 @@ lab5 =Blueprint('lab5',__name__)
 def dBConnect():
     conn = psycopg2.connect(
         host="127.0.0.1",
-        database = "knowledge_base_nehoroshih",
-        user = "nehoroshih_knowledge_base",
-        password = "123",
+        database = "DANIL_knowledge_base",
+        user = "DANIL_knowledge_base",
+        password = "1233",
         port = 5433
     )
 

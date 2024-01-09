@@ -95,6 +95,9 @@ def menu():
                 <a href="lab8" target="_blank">Laboratory work #8</a>
             </li>
             <li>
+                <a href="lab9" target="_blank">Laboratory work #9</a>
+            </li>
+            <li>
                 <a href="RGZ1" target="_blank">Control Laboratory work.</a>
             </li>  
         </ol>

@@ -45,17 +45,17 @@ def get_price(params):
     return {'result': calculate_price(params), "error": None}
 
 def calculate_price(params):
-    drink = params.get('drink')
-    milk = params.get('milk')
-    sugar = params.get('sugar')
+    drink = params['drink']
+    milk = params['milk']
+    sugar = params['sugar']
 
-    # Пусть кофе стоит 120 рублей, черный чай - 80 рублей, зеленый - 70 рублей.
+    # Пусть кофе стоит 150 рублей, черный чай - 40 рублей, зеленый - 60 рублей.
     if drink == 'coffee':
-        price = 120
+        price = 150
     elif drink == 'black-tea':
-        price = 80
+        price = 40
     else:
-        price = 70
+        price = 60
 
     # Добавка молока удорожает напиток на 30 рублей, а сахара - на 10.
     if milk:

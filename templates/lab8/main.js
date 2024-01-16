@@ -1,5 +1,5 @@
 function fillCourseList() {
-    fetch('/lab8/api/courses')
+    fetch('/lab8/api/courses/')
     .then (function (data){
         return data.json();
     })
@@ -23,6 +23,9 @@ function fillCourseList() {
 
             let delButton = document.createElement('button')
             delButton.innerText = 'Удалить';
+            delButton.onclick = function(){
+                deleteCourse(i);
+            }
 
             let tdActions = document.createElement('td');
             tdActions.append(editButton);
@@ -35,5 +38,15 @@ function fillCourseList() {
 
             tbody.append(tr);
         }
-    })
+    });
+}
+
+function deleteCourse(sum) {
+    if(! confirm('Вы точно хотите удалить курс ?'))
+        return;
+
+    fetch('/lab8/api/courses/${sum}',{method: 'DELETE'})
+    .then(function() {
+        fillCourseList();
+    });
 }

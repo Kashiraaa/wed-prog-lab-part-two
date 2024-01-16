@@ -41,3 +41,10 @@ def put_course(course_num):
     course["created_date"] = datetime.now()
     courses[course_num] = course
     return courses[course_num]
+
+@lab8.route('/lab8/api/courses/', methods=['POST'])
+def add_course():
+    course = request.get_json()
+    course["created_date"] = datetime.now()  
+    courses.append(course)
+    return {"num": len(courses)-1}  

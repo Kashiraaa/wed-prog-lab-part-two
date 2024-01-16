@@ -19,7 +19,7 @@ paid = False
 @lab7.route('/lab7/api', methods=['POST'])
 def api():
     data = request.json
-    global paid  # Используем глобальную переменную paid
+    global paid  
 
     if data['method'] == 'get-price':
         return get_price(data['params'])
@@ -27,19 +27,18 @@ def api():
     if data['method'] == 'pay':
         response = pay(data['params'])
         if not response.get("error"):
-            paid = True  # Обновляем состояние оплаты после успешной оплаты
+            paid = True  
         return response
     
     if data['method'] == 'refund':
-        if paid:  # Проверяем состояние оплаты
+        if paid:  
             response = refund(data['params'])
-            paid = False  # Обновляем состояние оплаты после успешного возврата
+            paid = False  
             return response
         else:
             return {"result": None, "error": "Оплата еще не выполнена"}
     
-    abort(400) #И в конце обработаем ситуацию, если вдруг прилетел нестандартный метод
-                #– просто вернём код 400:
+    abort(404) 
 
 def get_price(params):
     return {'result': calculate_price(params), "error": None}
@@ -49,7 +48,6 @@ def calculate_price(params):
     milk = params['milk']
     sugar = params['sugar']
 
-    # Пусть кофе стоит 150 рублей, черный чай - 40 рублей, зеленый - 60 рублей.
     if drink == 'coffee':
         price = 150
     elif drink == 'black-tea':
@@ -57,7 +55,6 @@ def calculate_price(params):
     else:
         price = 60
 
-    # Добавка молока удорожает напиток на 30 рублей, а сахара - на 10.
     if milk:
         price += 30
     if sugar:
@@ -74,7 +71,7 @@ def pay(params):
     if len(cvv) != 3 or not cvv.isdigit():
         return {"result": None, "error": "Неверный номер CVV/CVC"}
     
-    price = params['price']  # Используем переданную цену
+    price = params['price']  
 
     return {"result": f'С карты {card_num} списано {price} руб', "error": None}
 

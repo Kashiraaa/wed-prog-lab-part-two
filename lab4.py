@@ -56,13 +56,14 @@ def zerna():
         return render_template('zr.html')
 
     error = {}
+    pr = int()
     zr = request.form.get('zr')
     vs = request.form.get('vs')
     msgg = ''
 
     if vs is None or vs == '':
         error['vs'] = 'не введен вес'
-    elif float(vs) <= 0:
+    elif not vs.isdigit() or int(vs) <= 0:
         error['vs'] = 'неверное значение веса'
     elif zr:
         if zr == 'yachmen':
@@ -74,16 +75,17 @@ def zerna():
         elif zr == 'roj':
             pr = 14000
         
-    tc = float(vs) * pr
+    if 'vs' not in error:
+        tc = int(vs) * pr
 
-    if float(vs) > 50:
-        tc *= 0.9
-        msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} &#x20bd Применена скидка за большой объем.'.format(vs, tc)
-    else:
-        msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} &#x20bd'.format(vs, tc)
+        if int(vs) > 50:
+            tc *= 0.9
+            msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} рублей Применена скидка за большой объем.'.format(vs, tc)
+        else:
+            msgg = 'Заказ успешно сформирован. Вы заказали зерно. Вес: {} т. Сумма к оплате: {} рублей'.format(vs, tc)
 
-    if float(vs) > 500:
-        msgg = 'Такого объема сейчас нет в наличии.'
+        if int(vs) > 500:
+            msgg = 'Такого объема сейчас нет в наличии.'
 
     return render_template('zr.html', error=error, zr=zr, vs=vs, msgg=msgg)
 

@@ -4,21 +4,17 @@
 
 {% block main %}
     <h1>Заказ зерна</h1>
-    <div class="error" style="color: darkred">{{ error }}</div>
-    {% if msgg %}
-    <h1>Операция прошла успешно !!!</h1>
-    <div>{{ msgg }}</div>
-    {% endif %}
+    <span class="error" style="color: brown;">{{ errors }}</span>
     <form method="post">
         <div>
             <label>Выберите зерно</label>
         </div>
         <div>
             <select name="zr">
-                <option value="ячмень" {{ zr == 'ячмень' and 'selected' }}>ячмень</option>
-                <option value="овес" {{ zr == 'овес' and 'selected' }}>овес</option>
-                <option value="пшеница" {{ zr == 'пшеница' and 'selected' }}>пшеница</option>
-                <option value="рожь" {{ zr == 'рожь' and 'selected' }}>рожь</option>
+                <option value="yachmen" {{ zr == 'yachmen' and 'selected' }}>ячмень</option>
+                <option value="oves" {{ zr == 'oves' and 'selected' }}>овес</option>
+                <option value="psheniza" {{ zr == 'psheniza' and 'selected' }}>пшеница</option>
+                <option value="roj" {{ zr == 'roj' and 'selected' }}>рожь</option>
             </select>
         </div>
         <div>
@@ -32,4 +28,10 @@
             <a href="/lab4/zr">Назад</a>
         </div>
     </form> 
+    {% if msgg %}
+    {% endif %}
+    {% if msgg %}
+    <h1>Операция прошла успешно !!!</h1>
+    <div>{{ msgg }}</div>
+    {% endif %}
     {% endblock %}

@@ -9,6 +9,7 @@ from lab6 import lab6
 from lab7 import lab7
 from lab8 import lab8
 from lab9 import lab9
+from rgz import rgz
 from Db import db
 from Db.models import users, articles
 from flask_login import LoginManager
@@ -19,7 +20,7 @@ app.secret_key = '1233'
 user_db = 'danil_knowledge_base'
 host_ip = '127.0.0.1'
 host_port = '5432'
-database_name = 'chiber_knowledge_orm'
+database_name = 'rgz_kashirskiy_base'
 password = '1233'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user_db}:{password}@{host_ip}:{host_port}/{database_name}'
@@ -28,6 +29,7 @@ db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'lab6.login'
+login_manager.login_view = 'rgz.login'
 login_manager.init_app(app)
 
 @login_manager.user_loader
@@ -43,5 +45,6 @@ app.register_blueprint(lab6)
 app.register_blueprint(lab7)
 app.register_blueprint(lab8)
 app.register_blueprint(lab9)
+app.register_blueprint(rgz)
 
 

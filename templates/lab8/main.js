@@ -20,12 +20,15 @@ function fillCourseList() {
 
             let editButton = document.createElement('button')
             editButton.innerText = 'Редактировать';
+            editButton.onclick = function() {
+                editCourse(i, courses[i]);
+            };
 
             let delButton = document.createElement('button')
             delButton.innerText = 'Удалить';
             delButton.onclick = function(){
                 deleteCourse(i);
-            }
+            };
 
             let tdActions = document.createElement('td');
             tdActions.append(editButton);
@@ -71,14 +74,15 @@ function addCourse() {
 }
 
 function sendCourse(){
+    const num = document.getElementById('num').value;
     const course = {
         name: document.getElementById('name').value,
         videos: document.getElementById('videos').value,
         price: document.getElementById('price').value,
     }
 
-    const url = '/lab8/api/courses/';
-    const method = 'POST';
+    const url = '/lab8/api/courses/${num}';
+    const method = num ? "PUT": 'POST';
     fetch(url, {
         method: method,
         headres: {"Content - Type":  "application/json"},

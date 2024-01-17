@@ -22,10 +22,6 @@ host_port = '5432'
 database_name = 'chiber_knowledge_orm'
 password = '1233'
 
-@app.app_errorhandler(404)
-def not_found(err):
-    return "нет такой страницы", 404
-
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user_db}:{password}@{host_ip}:{host_port}/{database_name}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
